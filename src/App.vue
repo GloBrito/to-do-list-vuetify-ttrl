@@ -1,17 +1,39 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
-      <!--  -->
-    </v-navigation-drawer>
+    <v-system-bar app>
+      <v-spacer></v-spacer>
+
+      <v-icon>mdi-square</v-icon>
+
+      <v-icon>mdi-circle</v-icon>
+
+      <v-icon>mdi-triangle</v-icon>
+    </v-system-bar>
 
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Aplicação</v-toolbar-title>
+      <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
+    <v-navigation-drawer v-model="drawer" fixed temporary>
       <!--  -->
+    </v-navigation-drawer>
+
+    <v-main class="pink lighten-5">
+      <v-container>
+        <v-row>
+          <template v-for="n in 3">
+            <v-col :key="n" class="mt-2" cols="12">
+              <strong>Tarefa {{ n }}</strong>
+            </v-col>
+
+            <v-col v-for="j in 6" :key="`${n}${j}`" cols="6" md="2">
+              <v-sheet height="180"></v-sheet>
+            </v-col>
+          </template>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
